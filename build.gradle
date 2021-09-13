@@ -18,6 +18,10 @@ allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 
+	apply plugin: 'java-library'
+	apply plugin: 'maven-publish'
+
+
 	ext {
 		appName = "PartyGames"
 		gdxVersion = '1.10.0'

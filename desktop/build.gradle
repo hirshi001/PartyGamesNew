@@ -1,5 +1,8 @@
 apply plugin: 'application'
 
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
 sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
 mainClassName = 'com.hirshi001.game.desktop.DesktopLauncher'
 eclipse.project.name = appName + '-desktop'
