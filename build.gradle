@@ -18,10 +18,6 @@ allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 
-	apply plugin: 'java-library'
-	apply plugin: 'maven-publish'
-
-
 	ext {
 		appName = "PartyGames"
 		gdxVersion = '1.10.0'
@@ -55,6 +51,12 @@ subprojects {
 		maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 		maven { url 'https://jitpack.io' }
 	}
+}
+
+project(':core'){
+	apply plugin: 'java-library'
+	apply plugin: 'maven-publish'
+
 }
 
 publishing {
