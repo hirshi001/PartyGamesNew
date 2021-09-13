@@ -11,6 +11,9 @@ buildscript {
 	}
 }
 
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
 allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
@@ -47,6 +50,14 @@ subprojects {
 		gradlePluginPortal()
 		maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 		maven { url 'https://jitpack.io' }
+	}
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+		}
 	}
 }
 
