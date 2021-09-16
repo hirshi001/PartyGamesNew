@@ -23,12 +23,16 @@ public class PluginFileSystem {
         add(PosixFilePermission.OWNER_WRITE);
     }});
 
-    public static synchronized void create(ClassLoader loader, String filePath) throws IOException {
+    public static synchronized File create(ClassLoader loader, String filePath) throws IOException {
         InputStream is = loader.getResourceAsStream(filePath);
         if(is==null) throw new FileNotFoundException(filePath);
 
         Path path = Files.createTempFile(filePath, null, attributes);
-        FileOutputStream outputStream = new FileOutputStream(path.toFile());
+
+        File file = path.toFile();
+        file.deleteOnExit();
+
+        FileOutputStream outputStream = new FileOutputStream(file);
 
         int nRead;
         while ((nRead = is.read(data, 0, data.length)) != -1) {
@@ -36,6 +40,7 @@ public class PluginFileSystem {
         }
         outputStream.flush();
         outputStream.close();
+        return file;
     }
 
 
