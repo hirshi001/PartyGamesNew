@@ -7,10 +7,12 @@ import com.hirshi001.game.PartyGames;
 import com.hirshi001.game.common.plugin.pluginsecurity.PluginManager;
 import com.hirshi001.game.common.plugin.pluginsecurity.PluginSecurityManager;
 import com.hirshi001.game.common.plugin.pluginsecurity.PluginSecurityPolicy;
+import de.damios.guacamole.gdx.StartOnFirstThreadHelper;
 
 /** Launches the desktop (LWJGL) application. */
 public class DesktopLauncher {
 	public static void main(String[] args) {
+		if(StartOnFirstThreadHelper.startNewJvmIfRequired()) return;
 		createApplication();
 	}
 

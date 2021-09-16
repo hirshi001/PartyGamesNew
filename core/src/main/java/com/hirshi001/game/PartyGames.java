@@ -14,10 +14,10 @@ import com.hirshi001.game.server.Server;
 import org.xeustechnologies.jcl.JarClassLoader;
 import org.xeustechnologies.jcl.JclObjectFactory;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class PartyGames implements ApplicationListener {
 
@@ -43,34 +43,13 @@ public class PartyGames implements ApplicationListener {
 	@Override
 	public void create () {
 		gdxSave = new GdxSave();
+		gdxSave.save();
 		playerSet = new HashMap<>();
 		jcl = new JarClassLoader();
-
-		File file = Gdx.files.external(EXTERNAL_PATH + "JarPlugins/hi.jar").file();
-
-		try {
-			jcl.add(new FileInputStream(file));
-			JclObjectFactory factory = JclObjectFactory.getInstance();
-			GamePlugin plugin = (GamePlugin)factory.create(jcl, "hi");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-
-		System.out.println(file.toURI());
-		if(!file.exists()) {
-			try {
-				file.getParentFile().mkdirs();
-				file.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 
 
 		Box2D.init();
 		IpAddress.loadAddress();
-		System.setOut((PrintStream) Gdx.app.getApplicationLogger());
 
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.app.log("create log", "test log");
@@ -78,8 +57,24 @@ public class PartyGames implements ApplicationListener {
 		Gdx.app.debug("create debug", "test debug");
 		Gdx.app.log("create log", "test log");
 
+		File file = Gdx.files.external(EXTERNAL_PATH + "JarPlugins/PartyGamesPluginTest-1.0-SNAPSHOT.jar").file();
+
+		try {
+			jcl.add(new FileInputStream(file));
+			JclObjectFactory factory = JclObjectFactory.getInstance();
+			manager.start(()->(GamePlugin)factory.create(jcl, "MainPlugin"));
+		} catch (FileNotFoundException e) {
+			gdxSave.save();
+			manager.start(PartyGamePlugin::new);
+			e.printStackTrace();
+		}
+
+ /*
+
 		gdxSave.save();
 		manager.start(PartyGamePlugin::new);
+
+  */
 	}
 
 	@Override
@@ -88,6 +83,12 @@ public class PartyGames implements ApplicationListener {
 			if(plugin.isFinished()){
 				plugin.dispose();
 				gdxSave.set();
+				manager.start(PartyGamePlugin::new);
+				List<String> classesToRemove = new ArrayList<>(jcl.getLoadedClasses().keySet());
+				for(String name:classesToRemove){
+					jcl.unloadClass(name);
+				}
+				System.out.println(jcl.getLoadedClasses().size());
 			}else {
 				plugin.render();
 			}

@@ -13,6 +13,8 @@ import com.hirshi001.game.common.util.BetterApplicationLogger;
 import logger.ConsoleColors;
 import logger.DateStringFunction;
 
+import java.io.PrintStream;
+
 public class LwjglPluginApplication extends LwjglApplication {
 
     private PluginManager manager;
@@ -145,6 +147,9 @@ public class LwjglPluginApplication extends LwjglApplication {
 
     @Override
     public void setApplicationLogger(ApplicationLogger applicationLogger) {
+        if(applicationLogger instanceof PrintStream){
+            System.setOut((PrintStream) applicationLogger);
+        }
         super.setApplicationLogger(applicationLogger);
     }
 

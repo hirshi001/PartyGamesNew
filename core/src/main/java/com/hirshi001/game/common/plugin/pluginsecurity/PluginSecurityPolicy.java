@@ -1,6 +1,7 @@
 package com.hirshi001.game.common.plugin.pluginsecurity;
 
 import com.badlogic.gdx.Gdx;
+import org.xeustechnologies.jcl.JarClassLoader;
 
 import javax.sound.sampled.AudioPermission;
 import java.io.FilePermission;
@@ -26,7 +27,7 @@ public class PluginSecurityPolicy extends Policy {
     }
 
     private static boolean isPluginLoader(ClassLoader loader){
-        return false;
+        return loader instanceof JarClassLoader;
     }
 
 

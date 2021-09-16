@@ -1,6 +1,7 @@
 package com.hirshi001.game.common.plugin.pluginsecurity;
 
 import com.hirshi001.game.common.plugin.plugins.GamePlugin;
+import com.hirshi001.game.common.util.GdxSave;
 
 import java.security.Policy;
 import java.util.function.Supplier;
@@ -13,6 +14,10 @@ public class PluginManager {
 
     private Policy oldPolicy;
     private SecurityManager oldManager;
+
+    private GdxSave gdxSave;
+
+
 
 
     public PluginManager(){
