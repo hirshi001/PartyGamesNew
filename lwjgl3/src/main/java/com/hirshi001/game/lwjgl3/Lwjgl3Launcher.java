@@ -16,12 +16,7 @@ public class Lwjgl3Launcher {
 	}
 
 	private static Lwjgl3Application createApplication() {
-
-		PluginManager manager = new PluginManager()
-				.setSecurityManager(new PluginSecurityManager())
-				.setSecurityPolicy(new PluginSecurityPolicy());
-
-		return new Lwjgl3PluginApplication(new PartyGames(manager), manager, getDefaultConfiguration());
+		return new Lwjgl3Application(new PartyGames(), getDefaultConfiguration());
 	}
 
 	private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {

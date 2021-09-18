@@ -3,7 +3,7 @@ apply plugin: 'application'
 sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
 mainClassName = 'com.hirshi001.game.lwjgl3.Lwjgl3Launcher'
 eclipse.project.name = appName + '-lwjgl3'
-sourceCompatibility = 8.0
+sourceCompatibility = JavaVersion.VERSION_16
 
 dependencies {
 	implementation project(':core')

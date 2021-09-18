@@ -12,16 +12,11 @@ import de.damios.guacamole.gdx.StartOnFirstThreadHelper;
 /** Launches the desktop (LWJGL) application. */
 public class DesktopLauncher {
 	public static void main(String[] args) {
-		if(StartOnFirstThreadHelper.startNewJvmIfRequired()) return;
 		createApplication();
 	}
 
 	private static LwjglApplication createApplication() {
-		PluginManager manager = new PluginManager()
-				.setSecurityManager(new PluginSecurityManager())
-				.setSecurityPolicy(new PluginSecurityPolicy());
-
-		return new LwjglPluginApplication(new PartyGames(manager), manager, getDefaultConfiguration());
+		return new LwjglApplication(new PartyGames(), getDefaultConfiguration());
 	}
 
 	private static LwjglApplicationConfiguration getDefaultConfiguration() {

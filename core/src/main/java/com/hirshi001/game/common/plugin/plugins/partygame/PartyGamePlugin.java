@@ -1,14 +1,21 @@
 package com.hirshi001.game.common.plugin.plugins.partygame;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.hirshi001.game.PartyGames;
 import com.hirshi001.game.common.plugin.plugins.GamePlugin;
 import com.hirshi001.game.common.plugin.plugins.partygame.ui.screens.LoadingScreen;
+
+import java.nio.file.Files;
 
 public class PartyGamePlugin extends Game implements GamePlugin{
 
     private AssetManager assetManager;
+
+    public Skin skin;
 
     @Override
     public void create() {

@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -23,6 +24,7 @@ public class HomeScreen extends GameScreen {
     TextButton hostButton;
     TextButton joinButton;
     BitmapFont font;
+    Skin skin;
 
     public HomeScreen(PartyGamePlugin game) {
         super(game);
@@ -35,6 +37,9 @@ public class HomeScreen extends GameScreen {
         parameter.shadowColor = Color.BLACK;
         font = generator.generateFont(parameter);
         generator.dispose();
+
+        skin = new Skin(Gdx.files.internal("uiskin.json"));
+        skin.add("default-font", font, BitmapFont.class);
 
         stage = new Stage(new FitViewport(100, 100));
         Gdx.input.setInputProcessor(stage);
@@ -59,7 +64,8 @@ public class HomeScreen extends GameScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                System.out.println("Clicked join");
+                game.setScreen(new JoinScreen(game));
+                dispose();
             }
         });
 
@@ -70,8 +76,6 @@ public class HomeScreen extends GameScreen {
 
 
         float width = 40F;
-
-
 
         hostButton.setTransform(true);
         joinButton.setTransform(true);

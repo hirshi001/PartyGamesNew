@@ -7,16 +7,16 @@ import com.badlogic.gdx.graphics.GL30;
 public class GdxSave {
 
 
-    private Application app;
-    private Graphics graphics;
-    private Audio audio;
-    private Input input;
-    private Files files;
-    private Net net;
+    public Application app;
+    public Graphics graphics;
+    public Audio audio;
+    public Input input;
+    public Files files;
+    public Net net;
 
-    private GL20 gl;
-    private GL20 gl20;
-    private GL30 gl30;
+    public GL20 gl;
+    public GL20 gl20;
+    public GL30 gl30;
 
     public void save(){
         app = Gdx.app;

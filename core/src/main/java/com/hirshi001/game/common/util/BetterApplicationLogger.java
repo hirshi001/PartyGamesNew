@@ -21,27 +21,45 @@ public class BetterApplicationLogger extends Logger implements ApplicationLogger
         lock = new Object();
     }
 
+    public void log(String tag, String message, int depth){
+        super.log(tagColor + "["+tag+"] " + ConsoleColors.RESET + message, depth+1);
+    }
+
     @Override
     public void log(String tag, String message) {
-        super.log(tagColor + "["+tag+"] " + ConsoleColors.RESET + message, 2);
+        log(tag, message, 2);
+    }
+
+    public void log(String tag, String message, Throwable exception, int depth) {
+        super.log(tagColor + "["+tag+"] " + ConsoleColors.RESET + message, depth+1);
+        exception.printStackTrace(this);
     }
 
     @Override
     public void log(String tag, String message, Throwable exception) {
-        super.log(tagColor + "["+tag+"] " + ConsoleColors.RESET + message, 2);
-        exception.printStackTrace(this);
-
+        log(tag, message, exception, 2);
     }
+
     @Override
     public void error(String tag, String message) {
-        super.log(warnTagColor + "["+tag+"] " + ConsoleColors.RESET + message, 2);
+        this.error(tag, message, 2);
     }
+
+    public void error(String tag, String message, int depth) {
+        super.log(warnTagColor + "["+tag+"] " + ConsoleColors.RESET + message, depth+1);
+    }
+
 
     @Override
     public void error(String tag, String message, Throwable exception) {
-        super.log(warnTagColor + "["+tag+"] " + ConsoleColors.RESET + message, 2);
+        error(tag, message, exception, 2);
+    }
+
+    public void error(String tag, String message, Throwable exception, int depth) {
+        super.log(warnTagColor + "["+tag+"] " + ConsoleColors.RESET + message, depth+1);
         exception.printStackTrace(this);
     }
+
 
     @Override
     public void debug(String tag, String message) {
