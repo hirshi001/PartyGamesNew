@@ -68,7 +68,7 @@ public class PartyGames implements ApplicationListener {
 
 		File file = Gdx.files.external(EXTERNAL_PATH + "JarPlugins/PartyGamesPluginTest-1.0-SNAPSHOT.jar").file();
 
-		/*
+
 		try {
 			jcl.add(new FileInputStream(file));
 			JclObjectFactory factory = JclObjectFactory.getInstance();
@@ -79,12 +79,14 @@ public class PartyGames implements ApplicationListener {
 			e.printStackTrace();
 		}
 
-		 */
 
 
+/*
 
 		pluginSave.set();
 		manager.start(PartyGamePlugin::new);
+
+ */
 
 
 	}

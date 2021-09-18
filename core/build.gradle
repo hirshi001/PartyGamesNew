@@ -1,6 +1,5 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 eclipse.project.name = appName + '-core'
-sourceCompatibility = JavaVersion.VERSION_16
 
 
 apply plugin: 'java-library'
