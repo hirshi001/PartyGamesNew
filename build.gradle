@@ -11,6 +11,9 @@ buildscript {
 	}
 }
 
+
+group 'com.hirshi001'
+
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
