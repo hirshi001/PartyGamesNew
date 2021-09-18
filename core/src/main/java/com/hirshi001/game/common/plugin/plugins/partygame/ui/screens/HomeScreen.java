@@ -24,7 +24,7 @@ public class HomeScreen extends GameScreen {
     TextButton hostButton;
     TextButton joinButton;
     BitmapFont font;
-    Skin skin;
+    //Skin skin;
 
     public HomeScreen(PartyGamePlugin game) {
         super(game);
@@ -38,8 +38,8 @@ public class HomeScreen extends GameScreen {
         font = generator.generateFont(parameter);
         generator.dispose();
 
-        skin = new Skin(Gdx.files.internal("uiskin.json"));
-        skin.add("default-font", font, BitmapFont.class);
+        //skin = new Skin(Gdx.files.internal("uiskin.json"));
+        //skin.add("default-font", font, BitmapFont.class);
 
         stage = new Stage(new FitViewport(100, 100));
         Gdx.input.setInputProcessor(stage);
