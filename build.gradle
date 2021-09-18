@@ -36,7 +36,6 @@ allprojects {
 
 configure(subprojects) {
 	apply plugin: 'java-library'
-	sourceCompatibility = JavaVersion.VERSION_16
 	compileJava {
 		options.incremental = true
 	}
