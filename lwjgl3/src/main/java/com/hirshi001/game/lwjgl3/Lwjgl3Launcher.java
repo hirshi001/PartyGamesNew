@@ -7,6 +7,7 @@ import com.hirshi001.game.common.plugin.pluginsecurity.PluginManager;
 import com.hirshi001.game.common.plugin.pluginsecurity.PluginSecurityManager;
 import com.hirshi001.game.common.plugin.pluginsecurity.PluginSecurityPolicy;
 import de.damios.guacamole.gdx.StartOnFirstThreadHelper;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
