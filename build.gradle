@@ -20,6 +20,7 @@ apply plugin: 'maven-publish'
 allprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
+	apply plugin: 'maven-publish'
 
 	ext {
 		appName = "PartyGames"
@@ -39,6 +40,7 @@ allprojects {
 
 configure(subprojects) {
 	apply plugin: 'java-library'
+	apply plugin: 'maven-publish'
 	compileJava {
 		options.incremental = true
 	}
