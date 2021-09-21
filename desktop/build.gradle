@@ -4,7 +4,7 @@ sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
 mainClassName = 'com.hirshi001.game.desktop.DesktopLauncher'
 eclipse.project.name = appName + '-desktop'
 
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
 	implementation project(':core')
